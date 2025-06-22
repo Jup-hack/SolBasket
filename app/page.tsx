@@ -20,17 +20,6 @@ import {
 	TableRow,
 } from '@/components/ui/table';
 import {
-	PieChart,
-	Pie,
-	Cell,
-	ResponsiveContainer,
-	LineChart,
-	Line,
-	XAxis,
-	YAxis,
-	Tooltip,
-} from 'recharts';
-import {
 	TrendingUp,
 	TrendingDown,
 	ArrowUpDown,
@@ -53,15 +42,16 @@ const pieData = [
 	{ name: 'Others', value: 13, color: '#FF6B6B' },
 ];
 
-const sparklineData = [
-	{ time: '6d', value: 12200 },
-	{ time: '5d', value: 12150 },
-	{ time: '4d', value: 12380 },
-	{ time: '3d', value: 12290 },
-	{ time: '2d', value: 12400 },
-	{ time: '1d', value: 12216 },
-	{ time: 'now', value: 12450 },
-];
+// Commented out until charts are properly implemented
+// const sparklineData = [
+// 	{ time: '6d', value: 12200 },
+// 	{ time: '5d', value: 12150 },
+// 	{ time: '4d', value: 12380 },
+// 	{ time: '3d', value: 12290 },
+// 	{ time: '2d', value: 12400 },
+// 	{ time: '1d', value: 12216 },
+// 	{ time: 'now', value: 12450 },
+// ];
 
 const holdings = [
 	{
@@ -249,35 +239,11 @@ export default function Dashboard() {
 							<CardDescription>7-day portfolio value trend</CardDescription>
 						</CardHeader>
 						<CardContent>
-							<ResponsiveContainer width='100%' height={200}>
-								<LineChart data={sparklineData}>
-									<XAxis
-										dataKey='time'
-										axisLine={false}
-										tickLine={false}
-										className='text-xs'
-									/>
-									<YAxis hide />
-									<Tooltip
-										formatter={(value) => [
-											`$${value.toLocaleString()}`,
-											'Value',
-										]}
-										labelStyle={{ color: 'white' }}
-										contentStyle={{
-											backgroundColor: 'hsl(var(--popover))',
-											border: '1px solid hsl(var(--border))',
-										}}
-									/>
-									<Line
-										type='monotone'
-										dataKey='value'
-										stroke='#9945FF'
-										strokeWidth={2}
-										dot={false}
-									/>
-								</LineChart>
-							</ResponsiveContainer>
+							<div className='w-full h-[200px] flex items-center justify-center bg-muted rounded'>
+								<span className='text-muted-foreground'>
+									Performance Chart (Coming Soon)
+								</span>
+							</div>
 						</CardContent>
 					</Card>
 
@@ -295,29 +261,11 @@ export default function Dashboard() {
 						</CardHeader>
 						<CardContent>
 							<div className='flex items-center justify-center'>
-								<ResponsiveContainer width='100%' height={200}>
-									<PieChart>
-										<Pie
-											data={pieData}
-											cx='50%'
-											cy='50%'
-											innerRadius={60}
-											outerRadius={90}
-											paddingAngle={2}
-											dataKey='value'>
-											{pieData.map((entry, index) => (
-												<Cell key={`cell-${index}`} fill={entry.color} />
-											))}
-										</Pie>
-										<Tooltip
-											formatter={(value) => [`${value}%`, 'Weight']}
-											contentStyle={{
-												backgroundColor: 'hsl(var(--popover))',
-												border: '1px solid hsl(var(--border))',
-											}}
-										/>
-									</PieChart>
-								</ResponsiveContainer>
+								<div className='w-full h-[200px] flex items-center justify-center bg-muted rounded'>
+									<span className='text-muted-foreground'>
+										Token Allocation Chart (Coming Soon)
+									</span>
+								</div>
 							</div>
 							<div className='mt-4 space-y-2'>
 								{pieData.map((item, index) => (

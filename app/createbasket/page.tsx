@@ -309,7 +309,11 @@ export default function CreateBasket() {
 					</div>
 				</div>
 
-				<Tabs defaultValue='create' className='w-full'>
+				<Tabs
+					defaultValue='create'
+					className='w-full'
+					value={currentTab}
+					onValueChange={setCurrentTab}>
 					<TabsList className='grid w-full grid-cols-3'>
 						<TabsTrigger value='create'>Create Basket</TabsTrigger>
 						<TabsTrigger value='templates'>Templates</TabsTrigger>
@@ -681,9 +685,10 @@ export default function CreateBasket() {
 											<AlertDialogHeader>
 												<AlertDialogTitle>Confirm Investment</AlertDialogTitle>
 												<AlertDialogDescription>
-													You're about to invest ₹
-													{investmentAmount.toLocaleString()} in "{basketName}".
-													This will execute swaps via Jupiter Exchange.
+													You&apos;re about to invest ₹
+													{investmentAmount.toLocaleString()} in &ldquo;
+													{basketName}&rdquo;. This will execute swaps via
+													Jupiter Exchange.
 												</AlertDialogDescription>
 											</AlertDialogHeader>
 											<AlertDialogFooter>

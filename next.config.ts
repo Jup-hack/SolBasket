@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+	// Configuration will be minimal for now since we removed charts
 };
 
 export default nextConfig;
